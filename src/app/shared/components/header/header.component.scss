@@ -1,0 +1,56 @@
+@import 'src/assets/colors';
+
+:host {
+  nav {
+    display: flex;
+    flex-direction: row;
+    font-size: 10pt;
+    padding: 2px;
+
+    .logo-wrapper {
+      height: 20px;
+      img {
+        border: 1px solid white;
+        margin-right: 4px;
+      }
+    }
+
+    .nav-wrapper {
+      display: flex;
+      padding: 2px 0;
+
+      .title {
+        font-weight: bold;
+        margin-right: 6px;
+      }
+
+      ul {
+        display: flex;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+          display: flex;
+
+          &:not(:last-child) {
+            .line {
+              border-right: 1px solid $secondary;
+              margin: 2px 7.5px;
+            }
+          }
+
+          a {
+            text-decoration: none;
+            color: $secondary;
+            cursor: pointer;
+
+            &.active {
+              color: white;
+            }
+          }
+        }
+      }
+    }
+  }
+}

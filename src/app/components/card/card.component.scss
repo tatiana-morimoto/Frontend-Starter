@@ -1,0 +1,21 @@
+:host {
+
+  .ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  ::ng-deep {
+    mat-card {
+      margin-bottom: 10px;
+
+      mat-card-header {
+        @extend .ellipsis;
+      }
+
+      .mat-card-description {
+        @extend .ellipsis;
+      }
+    }
+  }
+}

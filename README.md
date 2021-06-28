@@ -21,7 +21,7 @@ Pick one or more aspects from the description and implement it in your preferred
 would like that. We'd expect you to spend 1-5 hours with the task. Use the description as inspiration and make something
 large or small, in which you focus on what you think is the most fun.
 
-As a starter pack, this repository contains an API that can be used to help you ignore the specifics of the backend. 
+As a starter pack, this repository contains an API that can be used to help you ignore the specifics of the backend.
 Whether you choose to use the solution provided here is completely up to you.
 
 ### Evaluation
@@ -48,9 +48,9 @@ yarn start / npm run start
 The default location for the json-server is [`localhost:8080`](http://localhost:8080)
 
 ### API endpoints
-There are four endpoints provided by the [json-server](https://github.com/typicode/json-server). As per [json-server](https://github.com/typicode/json-server) documentation: 
+There are four endpoints provided by the [json-server](https://github.com/typicode/json-server). As per [json-server](https://github.com/typicode/json-server) documentation:
 all of endpoints support `GET`, `POST`, `PUT` and `DELETE` so be careful!
-The API generates an in memory JSON-database on runtime that contains 1000 products, 100 users and their carts by default. That 
+The API generates an in memory JSON-database on runtime that contains 1000 products, 100 users and their carts by default. That
 means restarting will recreate the database. There is no authentication, so you can use any user id, or ignore the endpoint
 altogether.
 

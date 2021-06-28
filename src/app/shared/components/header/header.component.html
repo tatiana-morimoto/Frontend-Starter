@@ -1,0 +1,16 @@
+<nav>
+  <div class="logo-wrapper">
+    <img src="" />
+  </div>
+  <div class="nav-wrapper">
+    <div class="title">Aize</div>
+    <ul>
+      <li *ngFor="let item of menu">
+        <a [class.active]="currentUrl === item.url" (click)="goTo(item.url)">
+          {{ item.name }}
+        </a>
+        <div class="line"></div>
+      </li>
+    </ul>
+  </div>
+</nav>
