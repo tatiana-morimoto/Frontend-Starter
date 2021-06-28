@@ -4,15 +4,21 @@ import { mergeMap, map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { ProductsService } from './products.service';
 import {
+  DeleteProduct,
+  DeleteProductFailure,
+  DeleteProductSuccess,
   LoadProducts,
   LoadProductsFailure,
   LoadProductsSuccess,
   LoadRecommended,
   LoadRecommendedFailure,
   LoadRecommendedSuccess,
-  ProductsActionsTypes, SearchProduct, SearchProductFailure, SearchProductSuccess
+  ProductsActionsTypes,
+  SearchProduct,
+  SearchProductFailure,
+  SearchProductSuccess,
 } from './products.actions';
-import {Product} from './products.models';
+import { Product } from './products.models';
 
 @Injectable()
 export class ProductsEffects {
@@ -45,6 +51,17 @@ export class ProductsEffects {
       this.productsService.searchProduct(action.query).pipe(
         map((products: Product[]) => new SearchProductSuccess(products)),
         catchError((error) => of(new SearchProductFailure(error))),
+      ),
+    ),
+  );
+
+  @Effect()
+  deleteProduct$ = this.actions$.pipe(
+    ofType<DeleteProduct>(ProductsActionsTypes.DeleteProduct),
+    mergeMap((action) =>
+      this.productsService.deleteProduct(action.id).pipe(
+        map((product: Product) => new DeleteProductSuccess(product)),
+        catchError((error) => of(new DeleteProductFailure(error))),
       ),
     ),
   );

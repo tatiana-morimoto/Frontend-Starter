@@ -1,18 +1,17 @@
-<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="1%"
-     fxLayoutAlign="stretch">
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="1%" fxLayoutAlign="stretch">
   <mat-card fxFlex="32.3%" *ngFor="let product of products">
     <mat-card-header>
-      <mat-card-title>{{product.name}}</mat-card-title>
+      <mat-card-title>{{ product.name }}</mat-card-title>
     </mat-card-header>
-    <img mat-card-image src="{{product.defaultImage}}}" alt="{{product.name}}">
+    <img mat-card-image src="{{ product.defaultImage }}}" alt="{{ product.name }}" />
     <mat-card-content>
       <p class="mat-card-description">
-        {{product.description}}
+        {{ product.description }}
       </p>
-      <p>Price: {{product.price}}</p>
+      <p>Price: {{ product.price }}</p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary">Add to Cart</button>
+      <button mat-raised-button color="primary" (click)="addToCart(product)">Add to Cart</button>
     </mat-card-actions>
   </mat-card>
 </div>

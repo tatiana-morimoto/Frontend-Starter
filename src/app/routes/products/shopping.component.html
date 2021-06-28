@@ -1,22 +1,26 @@
+<mat-form-field [formGroup]="form">
+  <input matInput type="search" autocomplete="off" placeholder="Search" formControlName="search" />
+</mat-form-field>
+
 <div class="loading" *ngIf="loading">
   <img src="/assets/loading.gif" />
   <p>Loading</p>
 </div>
+
 <ng-container *ngIf="!loading">
-  <div fxLayout="row wrap" fxLayout.xs="column" fxLayout.sm="column" fxLayoutGap="5%"
-       fxLayoutAlign="stretch">
+  <div
+    fxLayout="row wrap"
+    fxLayout.xs="column"
+    fxLayout.sm="column"
+    fxLayoutGap="5%"
+    fxLayoutAlign="stretch"
+  >
     <div fxFlex="70%" fxFlex.xs="100%" fxFlex.sm="100%">
-      <mat-form-field [formGroup]="form">
-        <input matInput
-               type="search"
-               placeholder="Search"
-               formControlName="search">
-      </mat-form-field>
-      <app-card [products]="products$ | async"></app-card>
+      <app-card [products]="products$ | async" (addToCartChange)="addToCart($event)"></app-card>
     </div>
     <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="100%">
       Shopping Cart
-      <app-list></app-list>
+      <app-list [lists]="carts$ | async"></app-list>
     </div>
   </div>
 </ng-container>

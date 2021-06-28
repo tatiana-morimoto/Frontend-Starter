@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import {User} from './users.models';
+import { User } from './users.models';
 
 export enum UsersActionsTypes {
   LoadUser = '[User] Load User',
@@ -9,8 +9,7 @@ export enum UsersActionsTypes {
 
 export class LoadUser implements Action {
   readonly type = UsersActionsTypes.LoadUser;
-  constructor(public id: string) {
-  }
+  constructor(public id: string) {}
 }
 
 export class LoadUserSuccess implements Action {
@@ -23,7 +22,4 @@ export class LoadUserFailure implements Action {
   constructor(public error) {}
 }
 
-export type Actions =
-  | LoadUser
-  | LoadUserSuccess
-  | LoadUserFailure;
+export type Actions = LoadUser | LoadUserSuccess | LoadUserFailure;

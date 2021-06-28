@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import {CallStateProducts, CallStateRecommended} from './products.enum';
-import {ProductsState} from './products.reducer';
+import { CallStateProducts, CallStateRecommended } from './products.enum';
+import { ProductsState } from './products.reducer';
 
 export const getProductsState = createFeatureSelector<ProductsState>('products');
 
@@ -27,5 +27,3 @@ export const getRecommendedError = createSelector(
   getProductsState,
   (state) => state?.callStateRecommended === CallStateRecommended.ERROR,
 );
-
-

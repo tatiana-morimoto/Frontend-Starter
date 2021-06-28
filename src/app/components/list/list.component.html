@@ -1,3 +1,18 @@
 <mat-list role="list" *ngFor="let item of lists">
-  <mat-list-item role="listitem">{{item.name}}{{item.price}}</mat-list-item>
+  <mat-list-item fxLayout="row wrap" role="listitem">
+    <div fxFlex="75%">{{ item.name }}</div>
+    <div fxFlex="25%">{{ item.price }}</div>
+    <button
+      *ngIf="router.url.includes('admin')"
+      mat-raised-button
+      color="primary"
+      (click)="delete(item)"
+    >
+      Delete
+    </button>
+  </mat-list-item>
 </mat-list>
+<div fxLayout="row wrap" *ngIf="router.url.includes('shopping')">
+  <span fxFlex="50%">Total</span>
+  <span fxFlex="50%">{{ getTotal }}</span>
+</div>

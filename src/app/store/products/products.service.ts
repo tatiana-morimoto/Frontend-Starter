@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import {Product} from './products.models';
+import { Product } from './products.models';
 
 const BASE_URL = `${environment.api.url}`;
 
@@ -26,7 +26,7 @@ export class ProductsService {
     return this.http.put<Product>(`${BASE_URL}/products`, product);
   }
 
-  deleteProduct(id: number): Observable<Product> {
+  deleteProduct(id: string): Observable<Product> {
     return this.http.delete<Product>(`${BASE_URL}/products/${id}`);
   }
 

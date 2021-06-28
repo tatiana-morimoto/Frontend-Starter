@@ -1,1 +1,10 @@
-<p>admin works!</p>
+<div class="loading" *ngIf="loading">
+  <img src="/assets/loading.gif" />
+  <p>Loading</p>
+</div>
+
+<app-list
+  *ngIf="!loading"
+  [lists]="products$ | async"
+  (deleteChange)="removeProduct($event)"
+></app-list>

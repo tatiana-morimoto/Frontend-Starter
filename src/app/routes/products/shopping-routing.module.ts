@@ -10,7 +10,7 @@ const routes: Routes = [
     component: HeaderComponent,
   },
   {
-    path: '',
+    path: ':id',
     component: ShoppingComponent,
   },
 ];

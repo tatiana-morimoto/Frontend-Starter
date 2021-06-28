@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import {Product} from './products.models';
+import { Product } from './products.models';
 
 export enum ProductsActionsTypes {
   LoadProducts = '[Product] Load Products',
@@ -11,6 +11,9 @@ export enum ProductsActionsTypes {
   SearchProduct = '[Product] Search Product',
   SearchProductSuccess = '[Product] Search Product Success',
   SearchProductFailure = '[Product] Search Product Failure',
+  DeleteProduct = '[Product] Delete Product',
+  DeleteProductSuccess = '[Product] Delete Product Success',
+  DeleteProductFailure = '[Product] Delete Product Failure',
 }
 
 export class LoadProducts implements Action {
@@ -57,6 +60,21 @@ export class SearchProductFailure implements Action {
   constructor(public error) {}
 }
 
+export class DeleteProduct implements Action {
+  readonly type = ProductsActionsTypes.DeleteProduct;
+  constructor(public id: string) {}
+}
+
+export class DeleteProductSuccess implements Action {
+  readonly type = ProductsActionsTypes.DeleteProductSuccess;
+  constructor(public product: Product) {}
+}
+
+export class DeleteProductFailure implements Action {
+  readonly type = ProductsActionsTypes.DeleteProductFailure;
+  constructor(public error) {}
+}
+
 export type Actions =
   | LoadProducts
   | LoadProductsSuccess
@@ -66,4 +84,7 @@ export type Actions =
   | LoadRecommendedFailure
   | SearchProduct
   | SearchProductSuccess
-  | SearchProductFailure;
+  | SearchProductFailure
+  | DeleteProduct
+  | DeleteProductSuccess
+  | DeleteProductFailure;

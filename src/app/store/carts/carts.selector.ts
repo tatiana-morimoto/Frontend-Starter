@@ -1,6 +1,6 @@
-import {createFeatureSelector, createSelector} from '@ngrx/store';
-import {CartsState} from './carts.reducer';
-import {CallStateCarts} from './carts.enum';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { CartsState } from './carts.reducer';
+import { CallStateCarts } from './carts.enum';
 
 const getCartsState = createFeatureSelector<CartsState>('carts');
 

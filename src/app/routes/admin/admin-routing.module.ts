@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HeaderComponent } from '../../shared/components/header/header.component';
-import {AdminComponent} from './admin.component';
+import { AdminComponent } from './admin.component';
+import { AdminGuard } from '../../shared/guards/admin.guard';
 
 const routes: Routes = [
   {
@@ -10,7 +11,8 @@ const routes: Routes = [
     component: HeaderComponent,
   },
   {
-    path: '/:id',
+    path: ':id',
+    canActivate: [AdminGuard],
     component: AdminComponent,
   },
 ];

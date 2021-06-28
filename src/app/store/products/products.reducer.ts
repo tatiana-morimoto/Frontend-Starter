@@ -1,9 +1,10 @@
-import {CallStateProducts, CallStateRecommended} from './products.enum';
+import { CallStateProducts, CallStateRecommended } from './products.enum';
 import { Actions, ProductsActionsTypes } from './products.actions';
 import { Product } from './products.models';
 
 export const initialState: ProductsState = {
   products: null,
+  productDeleted: null,
   recommended: null,
   callStateProducts: CallStateProducts.INIT,
   callStateRecommended: CallStateRecommended.INIT,
@@ -11,6 +12,7 @@ export const initialState: ProductsState = {
 
 export interface ProductsState {
   products: Product[];
+  productDeleted: Product;
   recommended: Product[];
   callStateProducts: CallStateProducts;
   callStateRecommended: CallStateRecommended;
@@ -27,7 +29,11 @@ export function productsReducer(state = initialState, action: Actions): Products
     case ProductsActionsTypes.LoadRecommended:
       return { ...state, callStateRecommended: CallStateRecommended.LOADING };
     case ProductsActionsTypes.LoadRecommendedSuccess:
-      return { ...state, callStateRecommended: CallStateRecommended.LOADED, recommended: action.recommended };
+      return {
+        ...state,
+        callStateRecommended: CallStateRecommended.LOADED,
+        recommended: action.recommended,
+      };
     case ProductsActionsTypes.LoadRecommendedFailure:
       return { ...state, callStateRecommended: CallStateRecommended.ERROR };
     case ProductsActionsTypes.SearchProduct:
@@ -35,6 +41,16 @@ export function productsReducer(state = initialState, action: Actions): Products
     case ProductsActionsTypes.SearchProductSuccess:
       return { ...state, callStateProducts: CallStateProducts.LOADED, products: action.products };
     case ProductsActionsTypes.SearchProductFailure:
+      return { ...state, callStateProducts: CallStateProducts.ERROR };
+    case ProductsActionsTypes.DeleteProduct:
+      return { ...state, callStateProducts: CallStateProducts.LOADING };
+    case ProductsActionsTypes.DeleteProductSuccess:
+      return {
+        ...state,
+        callStateProducts: CallStateProducts.LOADED,
+        productDeleted: action.product,
+      };
+    case ProductsActionsTypes.DeleteProductFailure:
       return { ...state, callStateProducts: CallStateProducts.ERROR };
   }
 }

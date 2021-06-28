@@ -1,7 +1,9 @@
+interface Product {
+  id: number;
+  quantity: number;
+}
+
 export interface Cart {
-  id: number; // User id
-  products: {
-    id: number;
-    quantity: number;
-  };
+  id: number;
+  products: Product[];
 }

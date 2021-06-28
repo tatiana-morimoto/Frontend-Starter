@@ -1,6 +1,6 @@
-import {CallStateUser} from './users.enum';
-import {User} from './users.models';
-import {UsersActionsTypes, Actions} from './users.actions';
+import { CallStateUser } from './users.enum';
+import { User } from './users.models';
+import { UsersActionsTypes, Actions } from './users.actions';
 
 export const initialState: UsersState = {
   user: null,
@@ -15,10 +15,10 @@ export interface UsersState {
 export function usersReducer(state = initialState, action: Actions): UsersState {
   switch (action.type) {
     case UsersActionsTypes.LoadUser:
-      return {...state, callStateUser: CallStateUser.LOADING};
+      return { ...state, callStateUser: CallStateUser.LOADING };
     case UsersActionsTypes.LoadUserSuccess:
-      return {...state, callStateUser: CallStateUser.LOADED, user: action.user};
+      return { ...state, callStateUser: CallStateUser.LOADED, user: action.user };
     case UsersActionsTypes.LoadUserFailure:
-      return {...state, callStateUser: CallStateUser.ERROR};
+      return { ...state, callStateUser: CallStateUser.ERROR };
   }
 }
